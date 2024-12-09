@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import HttpResponse, render
 
-def index(request):
-    return HttpResponse("Hello, world. You're in the polls index.")
+def mainpage(request):
+    return render(request, 'account/mainpage.html')
