@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 
 from account.models import Account
 
@@ -14,6 +15,7 @@ def register(request):
     context =  {'form': form}
     return render(request, 'account/register.html', context)
 
+@login_required
 def mainpage(request):
     # get the information of current user with the same id
     user_instance = Account.objects.get(user_info=request.user)

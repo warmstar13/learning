@@ -14,4 +14,3 @@ class Task(models.Model):
     
     def __str__(self):
         return str(self.reward)
-# Create your models here.
