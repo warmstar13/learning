@@ -1,8 +1,14 @@
 {%extends 'account/acc_base.html'%}
 
 {%block content%}
-This is your account.
+    {% if user.is_authenticated %}
+        <h2>This is your account.</h2>
 
-Your username: {{ username }}
-Your exp: {{ exp }}
+        <p>Your username: {{ username }}</p>
+        <p>Your exp: {{ exp }}</p>
+
+    {% else %}
+        <h2> You are not logged in.</h2>
+
+    {% endif %}
 {% endblock content %}
