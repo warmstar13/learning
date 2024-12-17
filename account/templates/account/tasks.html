@@ -1,6 +1,15 @@
 {% extends 'account/acc_base.html' %}
 
 {% block content %}
+    <h2>Tasks</h2>
+        {% for task in tasks %}
+        <form action="{% url 'account:tasks' %}" method="post">
+            {% csrf_token %}
+            <p>{{ task.description }}</p>
+            <button type="submit" name="action" value="{{ task.reward }}">{{ task.reward }}</button>
+        </form>
+        {% endfor %}
+    <h3>Free exp test</h3>
     <form action="{% url 'account:tasks' %}" method="post">
         {% csrf_token %}
         <button type="submit" name="action" value="5">+5 exp</button>

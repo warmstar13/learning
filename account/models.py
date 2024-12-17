@@ -12,5 +12,6 @@ class Account(models.Model):
 class Task(models.Model):
     reward = models.IntegerField(default=0)
     creator_account = models.ForeignKey(Account, on_delete=models.CASCADE, default=None)
+    description = models.TextField(default="Default task")
     def __str__(self):
         return str(self.reward)

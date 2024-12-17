@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from account.forms import TaskForm
-from account.models import Account
+from account.models import Account, Task
 
 def register(request):
     if request.method == 'POST':
@@ -39,7 +39,8 @@ def tasks(request):
         elif action == '20':
             user_instance.exp += 20
             user_instance.save()
-    context = {'exp': user_instance.exp}
+    tasks = Task.objects.all()
+    context = {'exp': user_instance.exp, 'tasks': tasks}
     return render(request, 'account/tasks.html', context)
 
 def leaderboard(request, page):
