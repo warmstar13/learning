@@ -1,0 +1,16 @@
+{% extends 'account/acc_base.html' %}
+
+{% block content %}
+    <form action="{% url 'account:tasks' %}" method="post">
+        {% csrf_token %}
+        <button type="submit" name="action" value="5">+5 exp</button>
+    </form>
+    <form action="{% url 'account:tasks' %}" method="post">
+        {% csrf_token %}
+        <button type="submit" name="action" value="10">+10 exp</button>
+    </form>
+    <form action="{% url 'account:tasks' %}" method="post">
+        {% csrf_token %}
+        <button type="submit" name="action" value="20">+20 exp</button>
+    </form>
+    {% endblock content %}

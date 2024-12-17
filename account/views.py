@@ -25,3 +25,20 @@ def mainpage(request):
         return render(request, 'account/mainpage.html', context)
     else:
         return render(request, 'account/mainpage.html')
+    
+def tasks(request):
+    if request.method == 'POST':
+        action = request.POST.get('action')
+        if action == '5':
+            user_instance = Account.objects.get(user_info=request.user)
+            user_instance.exp += 5
+            user_instance.save()
+        elif action == '10':
+            user_instance = Account.objects.get(user_info=request.user)
+            user_instance.exp += 10
+            user_instance.save()
+        elif action == '20':
+            user_instance = Account.objects.get(user_info=request.user)
+            user_instance.exp += 20
+            user_instance.save()
+    return render(request, 'account/tasks.html')
