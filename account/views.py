@@ -30,15 +30,8 @@ def tasks(request):
     user_instance = Account.objects.get(user_info=request.user)
     if request.method == 'POST':
         action = request.POST.get('action')
-        if action == '5':
-            user_instance.exp += 5
-            user_instance.save()
-        elif action == '10':
-            user_instance.exp += 10
-            user_instance.save()
-        elif action == '20':
-            user_instance.exp += 20
-            user_instance.save()
+        user_instance.exp += int(action)
+        user_instance.save()
     tasks = Task.objects.all()
     context = {'exp': user_instance.exp, 'tasks': tasks}
     return render(request, 'account/tasks.html', context)
