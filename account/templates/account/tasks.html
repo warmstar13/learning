@@ -13,4 +13,5 @@
         {% csrf_token %}
         <button type="submit" name="action" value="20">+20 exp</button>
     </form>
-    {% endblock content %}
+    <p>Exp: {{ exp }}</p>
+{% endblock content %}
