@@ -2,10 +2,16 @@
 
 {% block content %}
     <h2>Leaderboard</h2>
-    <ol start="{{ page }}">
+    <ol start="{{ start_top }}">
         {% for user in top_users %}
             <li>{{ user.username }}: {{ user.exp }}</li>
         {% endfor %}
     </ol>
 
+    {% if not first %}
+        <a href="{% url 'account:leaderboard' page=page|add:-1 %}">&laquo; Previous</a>
+    {% endif %}
+    {% if not last %}
+        <a href="{% url 'account:leaderboard' page=page|add:1 %}">Next &raquo;</a>
+    {% endif %}
 {% endblock content %}

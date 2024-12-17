@@ -1,0 +1,10 @@
+{% extends 'account/acc_base.html' %}
+
+{% block content %}
+    <h2>Create task</h2>
+    <form action="{% url 'account:create_task' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create</button>
+    </form>
+{% endblock content %}
