@@ -41,3 +41,8 @@ def tasks(request):
             user_instance.save()
     context = {'exp': user_instance.exp}
     return render(request, 'account/tasks.html', context)
+
+def leaderboard(request, page):
+    top_users = Account.objects.order_by('-exp')[:10]
+    context = {'top_users': top_users, 'page': (page - 1) * 10 + 1}
+    return render(request, 'account/leaderboard.html', context)

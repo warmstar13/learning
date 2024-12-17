@@ -1,0 +1,11 @@
+{% extends 'account/acc_base.html' %}
+
+{% block content %}
+    <h2>Leaderboard</h2>
+    <ol start="{{ page }}">
+        {% for user in top_users %}
+            <li>{{ user.username }}: {{ user.exp }}</li>
+        {% endfor %}
+    </ol>
+
+{% endblock content %}
