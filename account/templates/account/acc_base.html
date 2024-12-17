@@ -1,10 +1,11 @@
 <!-- making shortcuts for urls -->
 <a href="{% url 'account:mainpage' %}">Main Page</a>
-
+<a href="{% url 'account:leaderboard' page=1%}">Leaderboard</a>
 <!--  if person is logged in -->
 {% if not user.is_authenticated %}
 <a href="{% url 'account:login' %}">Login</a>
 <a href="{% url 'account:register' %}">Register</a>
+
 {% else %}
     <p>Hello, {{ user.username }}</p>
     <form action="{% url 'account:logout' %}" method="post">
